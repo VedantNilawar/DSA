@@ -1,0 +1,24 @@
+
+
+class Solution {
+    public static int function(int temp){
+        int temp1=temp%4;
+        if(temp1==1){
+            return 1;
+        }
+        if(temp1==2){
+            return temp+1;
+        }
+        if(temp1==3){
+            return 0;
+        }
+        if(temp1==0){
+            return temp;
+        }
+        return 0;
+        
+    }
+    public static int findXOR(int l, int r) {
+       return function(l)^function(r);
+    }
+}
