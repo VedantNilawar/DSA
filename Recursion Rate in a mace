@@ -1,0 +1,41 @@
+class Solution {
+    public void function(int row,int col,int[][] maze,ArrayList<String> ans,String temp){
+        if(row==maze.length-1 && col==maze.length-1){
+          ans.add(temp);
+          return;
+        }
+        if(row+1<maze.length && maze[row+1][col]!=0){
+           
+            maze[row][col]=0;
+            function(row+1,col,maze,ans,temp+"D");
+            maze[row][col]=1;
+        }
+        if(col-1>=0 && maze[row][col-1]!=0){
+         
+            maze[row][col]=0;
+            function(row,col-1,maze,ans,temp+"L");
+            maze[row][col]=1;
+        }
+        if(col+1<maze.length && maze[row][col+1]!=0){
+            
+            maze[row][col]=0;
+            function(row,col+1,maze,ans,temp+"R");
+            maze[row][col]=1;
+        }
+        if(row-1>=0 && maze[row-1][col]!=0){
+        
+            maze[row][col]=0;
+            function(row-1,col,maze,ans,temp+"U");
+            maze[row][col]=1;
+        }
+        
+        
+    }
+    public ArrayList<String> ratInMaze(int[][] maze) {
+        ArrayList<String> ans=new ArrayList<>();
+        if(maze[0][0]==1){
+            function(0,0,maze,ans,"");
+        }
+        return ans;
+    }
+}
